@@ -1,0 +1,126 @@
+﻿@*@using newproject.Models.Home.*@
+@{
+    ViewBag.Title = "cartDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>YouR Cart</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">product</th>
+            <th scope="col">img</th>
+            <th scope="col">price</th>
+            <th scope="col">Available</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Line Total</th>
+            <th scope="col">Remove</th>
+            <th scope="col">Add/Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int Total = 0;
+        }
+        @if (Model != null)
+        {
+            foreach (var pr in Model)
+            {
+                int lineTotal = Convert.ToInt32(pr.Quantity * pr.Product.Price);
+                Total = Convert.ToInt32(@Total + lineTotal);
+                Session["SesTotal"] = Total;
+                <tr>
+                    <td>@pr.Product.Name</td>
+                    <td><img src="~/productimages/@pr.Product.Image" width="100" height="100" /></td>
+                    <td>@pr.Product.Price</td>
+                    <td>@pr.Product.Price</td>
+                    <td>
+                        @(pr.Quantity > 0 ? "InStock" : "Old")
+                    </td>
+
+                    <td>@pr.Quantity</td>
+                    <td>@lineTotal</td>
+                    <td><a href=@Url.Action("RemoveFromCart","Home",new {productid=pr.Product.ID })><i class="fa fa-trash" style="font-size:25px; color:black;"></i></a></td>
+                    <td>
+                        @using (Html.BeginForm("AddToCartfromcart", "Home", new { productid = pr.Product.ID }, FormMethod.Post))
+                        {
+                            <button type="submit" class=" btn btn-default"><i class="fa fa-plus"></i></button>
+                        }
+                        @using (Html.BeginForm("DecreaseQty", "Home", new { productid = pr.Product.ID }))
+                        {
+                            <button type="submit" class=" btn btn-default"><i class="fa fa-minus"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+
+        }
+        else
+        {
+            <h4>No Products Added to Cart</h4>
+        }
+        <tr>
+            <td colspan="6" class="text-right"><b id="total">Total: @Total</b></td>
+        </tr>
+    </tbody>
+</table>
+@Html.ActionLink("Continue for shipping", "Index", new { @class = "btn btn-success btn-block" })
+<div id="paypal-button-container"></div>
+@*<div id="paypal-button-container"></div>*@
+@*<a href="\payment/PaymentWithPaypal?total=@Total" id="paypal-button-container" class="btn btn-success">Payment >></a>*@
+<!-- Include the PayPal JavaScript SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=AfW1bkbiNpFkeXqPo84LmQ-XiW54yXu7dDON02UbtE9JwqjI4tNcl2tgNeeTCEov6k-kZaAHo0QcLkz4&currency=USD"></script>
+@section Scripts
+    {
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/js"></script>
+
+    <script>
+        //Proxy
+        var proxy = $.connection.ProductsHub;
+        //Connection start
+        proxy.client.ReceiveChanges = function (Id, qty) {
+            $("#" + Id + "").html(qty);
+        }
+        $.connection.hub.start().done(function () {
+
+        });
+    </script>
+}
+<script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            // Set up the transaction
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '@Total'
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+                @{
+                  Session["cart"] = null;
+}
+            }
+
+
+        }).render('#paypal-button-container');
+
+</script>
+
+}
+
+

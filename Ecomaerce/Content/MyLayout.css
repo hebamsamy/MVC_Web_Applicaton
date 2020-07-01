@@ -1,0 +1,444 @@
+﻿/*.nav1 {
+    height: 30px;
+}
+@media (max-width: 1040px) and (min-width:657px) {
+    .uL1 li a {
+        display: none;
+    }
+}
+
+@media (max-width:675px) {
+    .nav1 {
+        display: none;
+    }
+}
+
+hr {
+    background-color: white;
+    height: 10px;
+    width: 1px;
+    height: 13px;
+    opacity: 0.5;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    /*   background-color: black;
+    color: rgb(19, 4, 4);*/
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.a2:hover .tooltiptext {
+    visibility: visible;
+}
+
+.btn {
+    color: rgb(10, 37, 126);
+}
+
+.form-group {
+    width: 100%;
+}
+.input-group-field {
+    width: 90%;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    background: #f1f1f1;
+}
+
+/*.btnsearch {
+    float: left;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 25px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+}*/
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.row2 {
+    display: flex;
+}
+
+.row2col1, .row2col2 {
+    flex-wrap: nowrap;
+}
+
+.cart {
+    font-size: 25px;
+}
+
+.nav3 {
+    height: 40px;
+}
+.dropdown-toggle:after {
+    content: none
+}
+
+.a3 {
+    color: #252933;
+    position: relative;
+    font-weight: 700;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.a4 {
+    position: relative;
+    font-weight: 700;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+    .a4:hover {
+        color: white;
+    }
+
+.a5:hover {
+    color: white;
+}
+
+.a3:hover {
+    background-color: white;
+    border-top: 2px solid rgb(0, 60, 255);
+}
+
+@media (max-width:1250px) {
+    .a3 {
+        font-size: 13px;
+    }
+}
+
+@media (max-width:1200px) {
+    .li13 {
+        display: none;
+    }
+}
+
+@media (max-width:800px) {
+    .row2col2 {
+        display: none;
+    }
+
+    .login {
+        position: static !important;
+    }
+}
+
+@media(max-width:1099px) {
+    .hidden1 {
+        display: none;
+    }
+}
+
+@media(max-width:1060px) {
+    .hidden2 {
+        display: none;
+    }
+}
+
+@media(max-width:957px) {
+    .hidden3 {
+        display: none;
+    }
+}
+.a33::after {
+    content: none;
+}
+.mega-dropdown, .mega-dropdown1, .mega-dropdown2 {
+    position: static !important;
+}
+
+.mega-dropdown-menu, .mega-dropdown-menu1, .mega-dropdown-menu2 {
+    padding: 20px 0px;
+    width: 100%;
+    box-shadow: none;
+}
+
+.mega-dropdown-menu1 {
+    background-color: black;
+    height: 30px;
+}
+
+.mega-dropdown-menu2 {
+    height: 30px;
+}
+
+.mega-dropdown1:hover {
+    background-color: black;
+}
+
+.mega-dropdown2:hover {
+    background-color: white;
+    border-top: 2px solid orangered;
+}
+
+.mega-dropdown-menu1 > li, .mega-dropdown-menu2 > li {
+    width: 100%;
+}
+
+.mega-dropdown-menu1 > li > ul > li, .mega-dropdown-menu2 > li > ul > li {
+list-style: none;
+display: inline;
+}
+
+.mega-dropdown-menu1 > li > ul > li > a, .mega-dropdown-menu2 > li > ul > li > a {
+    text-decoration: none;
+    margin-left: 1%;
+    position: relative;
+    bottom: 10px;
+    color: white;
+}
+
+.mega-dropdown-menu2 > li > ul > li > a {
+    color: black;
+    font-size: 15px;
+}
+
+.mega-dropdown-menu > li > ul {
+padding: 0;
+margin: 0;
+}
+
+.mega-dropdown-menu > li > ul > li {
+    list-style: none;
+}
+
+.mega-dropdown-menu > li > ul > li > a {
+    display: block;
+    color: #222;
+    padding: 3px 5px;
+}
+@media (max-width:1200px) {
+    .colimg2 {
+        display: none;
+    }
+
+    .coldisplay {
+        display: none;
+    }
+
+    .caroselrow > .carousel-inner > img {
+        width: 100%;
+    }
+}
+
+@media (max-width:1000px) {
+    .colimg1 {
+        display: none;
+    }
+
+    .rowc1 {
+        width: 100%;
+    }
+}
+
+.ahref {
+    border-radius: 0 0 3px 3px;
+    position: absolute;
+    width: 100%;
+    display: block;
+    background: #252933;
+    color: #fff;
+    font-weight: 700;
+    z-index: 10;
+    margin: 0px;
+    padding: 1.0714285714rem;
+    left: 0px;
+    bottom: 0px;
+}
+
+.conta {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.col6 {
+    margin-top: 2%;
+}
+
+.columns h4 {
+    font-size: 12px;
+    font-weight: 800;
+    margin-top: 0.2rem;
+    font-style: normal;
+    margin-bottom: 0.5rem;
+    margin: 0;
+    padding: 0;
+    text-rendering: optimizeLegibility;
+    display: block;
+    font-family: opensans,"Helvetica Neue",Helvetica,Helvetica,Arial,sans-serif;
+}
+
+.columns ul {
+    display: block;
+    line-height: 1.6;
+}
+
+    .columns ul li {
+        list-style: none;
+        display: list-item;
+    }
+
+.list1 {
+    margin: 0px;
+    padding: 0px;
+}
+
+    .list1 li a {
+        font-size: 12px;
+        text-decoration: none;
+        color: rgb(44, 32, 32);
+    }
+
+        .list1 li a:hover {
+            color: black;
+        }
+
+.column {
+    float: left;
+}
+
+.list1 .list-group-item {
+    color: black;
+}
+
+.navimg1 {
+    display: inline-block;
+    vertical-align: middle;
+    height: auto;
+    max-width: 100%;
+}
+
+.divimg1 {
+    float: right;
+    margin: 0px;
+    display: block;
+}
+
+    .divimg1 a {
+        outline: 0 !important;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+.btnimg ul li {
+    text-decoration: none;
+    list-style: none;
+}
+
+    .btnimg ul li a {
+        color: #333;
+    }
+
+.rowrow {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+}
+
+.colcol {
+    border-left: 1px solid #e8ebee;
+    float: left;
+}
+
+.imgimg {
+    border-bottom: 1px solid #e8ebee;
+}
+.product-item
+{
+    position:relative;
+}
+.product-item .caption h5 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    border-top: 2px solid #333;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.product-item-badg {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    padding: 5px 12px 6px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 600;
+    background: #333;
+    -webkit-border-radius: 4px 0 4px 0;
+    -moz-border-radius: 4px 0 4px 0;
+    border-radius: 4px 0 4px 0;
+}
+.copyright {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+}
+
+.copyright .copyright-left {
+    text-align: left;
+}
+.copyright .copyright-right {
+    text-align: right;
+}
+
+.copyright .list-social {
+    float: right;
+    margin-top: -10px;
+}
+
+.copyright .list-social > li {
+    display: inline;
+    float: left;
+    margin: 2px 5px;
+}
+
+.copyright .list-social > li > a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    font-size: 20px;
+    color: #333333;
+}
+
+.copyright .list-social > li > a:hover {
+    background: #333333;
+    border: 1px solid #333333;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.copyright .list-social > li > a .fa {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -8px;
+    margin-top: -9px;
+}*/

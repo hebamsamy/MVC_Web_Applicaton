@@ -1,0 +1,111 @@
+﻿@model Ecomaerce.Models.Home.HomeIndexViewModel
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div id="ccarouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    @{
+                        var first = true;
+                    }
+                    @foreach (var item in Model.ListOfProducts)
+                    {
+                        <div class="carousel-item  @(first ? Html.Raw("active") : Html.Raw(""))">
+                            <img src="~/productimages/@item.Image" class="d-block w-100 img-fluid" style="height:320px;">
+                            @{first = false;
+                            }
+                        </div>
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="header-page">
+                <h2>Our Products<small>trends products</small></h2>
+            </div>
+        </div>
+    </div>
+    <hr style="color:white; width:100%;" />
+    <div class="row product-container">
+        @foreach (var item in Model.ListOfProducts)
+        {
+
+            <div class="col-12 col-md-6 col-lg-3" style="margin-bottom:8px;">
+                <div class="card">
+
+                    <img class="card-img-top" style="height:180px;width:100%;cursor:pointer;" src="~/productimages/@item.Image" />
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <p class="card-text">@item.Description</p>
+                        <p class="btn-block">@item.Price</p>
+                        <div class="row">
+                            <div class="col">
+                                @if (item.Quantity > 0)
+                                {
+                                    using (Html.BeginForm("AddToCart", "Home", new { productid = item.ID }, FormMethod.Post))
+                                    {
+                                        <button class="btn btn-success btn-block" type="submit"><i class="fa fa-shopping-cart"></i></button>
+
+                                    }
+
+                                }
+                                <span style="color:white;background-color:black; padding:5px;border-radius:50%" id="@item.ID"> @item.Quantity </span>
+
+                            </div>
+                            <div class="col">
+
+                                @using (Html.BeginForm("Details", "Home", new { productid = item.ID }, FormMethod.Post))
+                                {
+                                    <button type="submit" class="btn btn-info">Details</button>
+                                }
+                            </div>
+                        </div>
+
+
+                        <div class="product-item-badg">@(item.IsFeatured == true ? "New" : "Old")</div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+    <br />
+</div>
+<div class="container">
+    @Html.PagedListPager(Model.ListOfProducts, page => Url.Action("Index", new { page, search = Request.QueryString["search"] }))
+
+</div>
+@section Scripts
+    {
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/js"></script>
+
+    <script>
+        //Proxy
+        var proxy = $.connection.ProductsHub;
+        //Connection start
+        proxy.client.ReceiveChanges = function (Id, qty) {
+            $("#" + Id + "").html(qty);
+        }
+        $.connection.hub.start().done(function () {
+
+        });
+    </script>
+}
